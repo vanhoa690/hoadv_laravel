@@ -38,7 +38,7 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         $category->update($request->validated());
-        return new CategoryResource($category);
+        return new CategoryResource(resource: $category);
     }
 
     /**
@@ -47,6 +47,6 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
-        return response(null, 204);
+        return response(null, status: 204);
     }
 }
