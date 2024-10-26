@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
+    public function show(Profile $profile)
+    {
+        return new ProfileResource($profile);
+    }
 
 
     /**
@@ -63,7 +67,7 @@ class ProfileController extends Controller
         // ]);
 
         $input = $request->all();
-       
+
         // if ($image = $request->file('avatar')) {
         //     $destinationPath = 'images/';
         //     $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
