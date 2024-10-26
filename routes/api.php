@@ -11,7 +11,8 @@ Route::post('/login', [AuthController::class, 'login']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
-    Route::post('/profile', [ProfileController::class, 'create']);
+    // Route::patch('/profile/{profile}', [ProfileController::class, 'update']);
+    Route::apiResource('profiles', ProfileController::class);
 
     // Route::apiResource('posts', PostController::class);
 });
