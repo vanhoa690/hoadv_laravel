@@ -88,9 +88,38 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UserRequest $request, string $id)
     {
-        //
+        $user = User::find($id);
+        if (!$user) {
+            return response()->json(
+                [
+                    'success' => false,
+                    'message' => 'User not found'
+                ],
+                404
+            );
+        }
+
+        if ($request->name) {
+            $user->name = $request->name;
+        }
+        if ($request->email) {
+            $user->email = $request->email;
+        }
+        if ($request->password) {
+            $user->password = bcrypt($request->password);
+        }
+
+        $user->save();
+
+        return response()->json(
+            [
+                'success' => true,
+                'data' => $user,
+                'message' => 'User updated successfully'
+            ]
+        );
     }
 
     /**
