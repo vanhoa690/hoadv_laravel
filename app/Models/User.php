@@ -46,9 +46,22 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    public static function boot()
+    {
+        parent::boot();
 
+        self::created(function ($model) {
+            $profile = new Profile();
+            $model->profile()->save($profile);
+        });
+    }
     public function posts()
     {
         return $this->hasMany(Post::class);
+    }
+
+    public function profile()
+    {
+        return $this->hasOne(Profile::class);
     }
 }

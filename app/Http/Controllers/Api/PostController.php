@@ -28,8 +28,6 @@ class PostController extends Controller
     public function store(PostRequest $request)
     {
         $post = $request->user()->posts()->create($request->validated());
-
-        // $post = Post::create($request->validated());
         return new PostResource($post);
     }
 
@@ -38,7 +36,7 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        $post->update($request->validated());
+        $post->update($request->all());
         return new PostResource($post);
     }
 

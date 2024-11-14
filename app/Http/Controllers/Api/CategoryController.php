@@ -37,7 +37,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        $category->update($request->validated());
+        $category->update($request->all());
         return new CategoryResource(resource: $category);
     }
 
