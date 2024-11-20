@@ -52,4 +52,15 @@ class AuthController extends Controller
             return response()->json(["status" => 500, "message" => "Something went wrong!"], 500);
         }
     }
+
+    // * Logout 
+    public function logout(Request $request)
+    {
+        try {
+            $request->user()->currentAccessToken()->delete();
+            return ["status" => 200, "message" => "logged out successfully!"];
+        } catch (\Exception $err) {
+            return response()->json(["status" => 500, "message" => "Something went wrong!"], 500);
+        }
+    }
 }
