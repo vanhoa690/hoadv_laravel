@@ -8,6 +8,21 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    public function index()
+    {
+        $q = request()->query('q');
+        $limit = request()->query('limit', 10);
+        $users = User::latest();
+        if ($q) {
+            $users->where(function ($query) use ($q) {
+                $query->where('name', 'like', '%' . $q . '%');
+                $query->orWhere('email', 'like', '%' . $q . '%');
+            });
+        }
+        return response()->json(
+            $users->paginate($limit),
+        );
+    }
     public function updateProfileImage(Request $request)
     {
         $payload = $request->validate([

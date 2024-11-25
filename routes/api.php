@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::post("/auth/logout", [AuthController::class, 'logout']);
-
+    Route::get("/users", [UserController::class, 'index']);
     Route::post("/update/profile", [UserController::class, 'updateProfileImage']);
     Route::apiResources([
         "posts" => PostController::class,
