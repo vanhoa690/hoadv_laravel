@@ -10,7 +10,7 @@
                 <li>Active</li>
                 <li>Movie</li>
             </ul>
-            <h5><a href="#">{{ $category->title }}</a></h5>
+            <h5><a href="{{ route('categories.show', $category) }}">{{ $category->title }}</a></h5>
         </div>
     </div>
 </div>

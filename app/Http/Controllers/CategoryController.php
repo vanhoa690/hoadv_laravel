@@ -12,4 +12,9 @@ class CategoryController extends Controller
         $categories =  Category::latest()->get();
         return view('pages.categories.index', compact('categories'));
     }
+
+    public function show(Category $category): View
+    {
+        return view('pages.categories.show', compact('category'));
+    }
 }

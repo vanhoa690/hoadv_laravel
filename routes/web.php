@@ -36,5 +36,5 @@ Route::controller(CategoryController::class)
     ->name('categories.')
     ->group(function () {
         Route::get('/', 'index')->name('index');
-        // Route::get('/{course}', 'show')->name('show');
+        Route::get('/{category}', 'show')->name('show');
     });
