@@ -23,3 +23,9 @@ Route::get('/register', function () {
 Route::get('/login', function () {
     return view('login');
 });
+Route::get('/blog-detail', function () {
+    return view('blog-detail');
+});
+Route::get('/blog', function () {
+    return view('blog');
+});
