@@ -15,3 +15,11 @@ Route::get('/anime-watching', function () {
 Route::get('/categories', function () {
     return view('categories');
 });
+
+Route::get('/register', function () {
+    return view('register');
+});
+
+Route::get('/login', function () {
+    return view('login');
+});
