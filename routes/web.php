@@ -7,5 +7,5 @@ Route::get('/', function () {
 })->name('index');
 
 Route::get('/anime-details', function () {
-    return view('homepage');
+    return view('anime-details');
 });
