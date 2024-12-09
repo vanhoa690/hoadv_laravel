@@ -1,18 +1,8 @@
 <x-layout>
-    <!-- Normal Breadcrumb Begin -->
-    <section class="normal-breadcrumb set-bg" data-setbg="img/normal-breadcrumb.jpg">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="normal__breadcrumb__text">
-                        <h2>Our Blog</h2>
-                        <p>Welcome to the official Anime blog.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Normal Breadcrumb End -->
+    <x-breadcrumb.normal>
+        <h2>Our Blog</h2>
+        <p>Welcome to the official Anime blog.</p>
+    </x-breadcrumb.normal>
 
     <!-- Blog Section Begin -->
     <section class="blog spad">

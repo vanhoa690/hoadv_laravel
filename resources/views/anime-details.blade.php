@@ -1,20 +1,9 @@
 <x-layout>
-    <!-- Breadcrumb Begin -->
-    <div class="breadcrumb-option">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="breadcrumb__links">
-                        <a href="./index.html"><i class="fa fa-home"></i> Home</a>
-                        <a href="./categories.html">Categories</a>
-                        <span>Romance</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Breadcrumb End -->
-
+    <x-breadcrumb>
+        <a href="/"><i class="fa fa-home"></i> Home</a>
+        <a href="/categories">Categories</a>
+        <span>Romance</span>
+    </x-breadcrumb>
     <!-- Anime Section Begin -->
     <section class="anime-details spad">
         <div class="container">
@@ -42,7 +31,8 @@
                                 </div>
                                 <span>1.029 Votes</span>
                             </div>
-                            <p>Every human inhabiting the world of Alcia is branded by a “Count” or a number written on
+                            <p>Every human inhabiting the world of Alcia is branded by a “Count” or a number written
+                                on
                                 their body. For Hina’s mother, her total drops to 0 and she’s pulled into the Abyss,
                                 never to be seen again. But her mother’s last words send Hina on a quest to find a
                                 legendary hero from the Waste War - the fabled Ace!</p>
