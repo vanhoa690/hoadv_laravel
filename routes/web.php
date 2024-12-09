@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -12,9 +13,9 @@ Route::get('/anime-details', function () {
 Route::get('/anime-watching', function () {
     return view('anime-watching');
 });
-Route::get('/categories', function () {
-    return view('categories');
-});
+// Route::get('/categories', function () {
+//     return view('categories');
+// });
 
 Route::get('/register', function () {
     return view('register');
@@ -29,3 +30,11 @@ Route::get('/blog-detail', function () {
 Route::get('/blog', function () {
     return view('blog');
 });
+
+Route::controller(CategoryController::class)
+    ->prefix('categories')
+    ->name('categories.')
+    ->group(function () {
+        Route::get('/', 'index')->name('index');
+        // Route::get('/{course}', 'show')->name('show');
+    });
