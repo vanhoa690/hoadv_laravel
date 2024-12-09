@@ -9,7 +9,9 @@ Route::get('/', function () {
 Route::get('/anime-details', function () {
     return view('anime-details');
 });
-
+Route::get('/anime-watching', function () {
+    return view('anime-watching');
+});
 Route::get('/categories', function () {
     return view('categories');
 });
