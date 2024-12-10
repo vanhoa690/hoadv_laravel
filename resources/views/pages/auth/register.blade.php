@@ -1,6 +1,6 @@
 <x-layout>
     <x-breadcrumb.normal>
-        <h2>Register</h2>
+        <h2>Register User</h2>
         <p>Welcome to the official Anime blog.</p>
     </x-breadcrumb.normal>
     <!-- Signup Section Begin -->
@@ -9,23 +9,24 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="login__form">
-                        <h3>Sign Up</h3>
-                        <form action="#">
+                        <h3>Register</h3>
+                        <form method="POST" action="{{ route('register') }}">
+                            @csrf
                             <div class="input__item">
-                                <input type="text" placeholder="Email address">
+                                <input type="email" name="email" placeholder="Email address">
                                 <span class="icon_mail"></span>
                             </div>
                             <div class="input__item">
-                                <input type="text" placeholder="Your Name">
+                                <input type="text" name="name" placeholder="Your Name">
                                 <span class="icon_profile"></span>
                             </div>
                             <div class="input__item">
-                                <input type="text" placeholder="Password">
+                                <input type="password" name="password" placeholder="Password">
                                 <span class="icon_lock"></span>
                             </div>
-                            <button type="submit" class="site-btn">Login Now</button>
+                            <button type="submit" class="site-btn">Register Now</button>
                         </form>
-                        <h5>Already have an account? <a href="#">Log In!</a></h5>
+                        <h5>Already have an account? <a href="{{ route('login') }}">Log In!</a></h5>
                     </div>
                 </div>
                 <div class="col-lg-6">
