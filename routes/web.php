@@ -36,4 +36,5 @@ Route::controller(CategoryController::class)
     ->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/{category}', 'show')->name('show');
+        Route::get('/{category}/watching', 'watching')->name('watching');
     });

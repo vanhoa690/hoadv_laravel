@@ -17,4 +17,9 @@ class CategoryController extends Controller
     {
         return view('pages.categories.show', compact('category'));
     }
+
+    public function watching(Category $category): View
+    {
+        return view('pages.categories.watching', compact('category'));
+    }
 }
