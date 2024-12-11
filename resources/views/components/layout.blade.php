@@ -33,36 +33,22 @@
     <link rel="stylesheet" href={{ asset('assets/css/bootstrap.min.css') }} />
     <link rel="stylesheet" href={{ asset('assets/css/plugins.min.css') }} />
     <link rel="stylesheet" href={{ asset('assets/css/kaiadmin.min.css') }} />
-
-    <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link rel="stylesheet" href={{ asset('assets/css/demo.css') }} />
 </head>
 
 <body>
     <div class="wrapper">
-        <!-- Sidebar -->
         <x-sidebar />
-        <!-- End Sidebar -->
-
         <div class="main-panel">
             <div class="main-header">
                 <div class="main-header-logo">
-                    <!-- Logo Header -->
                     <x-header.logo />
-                    <!-- End Logo Header -->
                 </div>
-                <!-- Navbar Header -->
                 <x-header.navbar />
-                <!-- End Navbar -->
             </div>
 
             <div class="container">
-                <div class="page-inner">
-                    {{ $slot }}
-                </div>
+                {{ $slot }}
             </div>
-
-            {{-- Footer --}}
             <x-footer />
         </div>
 
