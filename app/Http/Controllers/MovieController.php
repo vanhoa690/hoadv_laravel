@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Genre;
 use App\Models\Movie;
 use Illuminate\Http\Request;
 
@@ -23,7 +24,8 @@ class MovieController extends Controller
     public function create()
     {
         $categories =  Category::latest()->get();
-        return view("pages.movies.create", compact('categories'));
+        $genres =  Genre::latest()->get();
+        return view("pages.movies.create", compact('categories', 'genres'));
     }
 
     /**
@@ -51,7 +53,8 @@ class MovieController extends Controller
     {
         $movie =  Movie::find($id);
         $categories =  Category::latest()->get();
-        return view("pages.movies.edit", compact('movie', 'categories'));
+        $genres =  Genre::latest()->get();
+        return view("pages.movies.edit", compact('movie', 'categories', 'genres'));
     }
 
     /**

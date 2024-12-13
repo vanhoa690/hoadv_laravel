@@ -27,6 +27,19 @@
                                     @endforeach
                                 </select>
                             </div>
+                            <div class="form-group">
+                                <label class="form-label">Genres</label>
+                                <div class="selectgroup selectgroup-pills">
+                                    @foreach ($genres as $genre)
+                                        <label class="selectgroup-item">
+                                            <input type="checkbox" name="genre_id" value="{{ $genre->id }}"
+                                                class="selectgroup-input"
+                                                {{ old('genre_id', $movie->genre_id) == $genre->id ? 'checked' : '' }} />
+                                            <span class="selectgroup-button">{{ $genre->name }}</span>
+                                        </label>
+                                    @endforeach
+                                </div>
+                            </div>
                         </div>
                         <div class="card-action">
                             <button type="submit" class="btn btn-success">Submit</button>
