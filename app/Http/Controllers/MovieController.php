@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Movie;
 use Illuminate\Http\Request;
 
@@ -21,7 +22,8 @@ class MovieController extends Controller
      */
     public function create()
     {
-        return view("pages.movies.add");
+        $categories =  Category::latest()->get();
+        return view("pages.movies.create", compact('categories'));
     }
 
     /**
@@ -29,7 +31,7 @@ class MovieController extends Controller
      */
     public function store(Request $request)
     {
-        $movie = Movie::create($request->all());
+        Movie::create($request->all());
         return redirect()->route('movies.index')->with('status', 'Movie Has Been inserted');
     }
 
@@ -48,7 +50,8 @@ class MovieController extends Controller
     public function edit(string $id)
     {
         $movie =  Movie::find($id);
-        return view("pages.movies.edit", compact('movie'));
+        $categories =  Category::latest()->get();
+        return view("pages.movies.edit", compact('movie', 'categories'));
     }
 
     /**

@@ -27,6 +27,7 @@
                         <tr>
                             <th scope="col">ID</th>
                             <th scope="col">Title</th>
+                            <th scope="col">Category</th>
                             <th scope="col">Active</th>
                             <th scope="col">Action</th>
                         </tr>
@@ -36,6 +37,7 @@
                             <tr>
                                 <td>{{ $movie->id }}</td>
                                 <td>{{ $movie->title }}</td>
+                                <td>{{ $movie->category->name }}</td>
                                 <td>
                                     <button type="button" class="btn btn-icon btn-round btn-success">
                                         <i class="fa fa-check"></i>

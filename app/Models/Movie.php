@@ -11,6 +11,7 @@ class Movie extends Model
 
     protected $fillable = [
         'title',
+        'category_id',
     ];
 
     public function category()

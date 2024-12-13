@@ -17,6 +17,16 @@
                                         value='{{ $movie->title }}' placeholder="Enter Title" />
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label for="category">Category</label>
+                                <select class="form-select form-control" id="category" name="category_id">
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}"
+                                            {{ old('category_id', $movie->category_id) == $category->id ? 'selected' : '' }}>
+                                            {{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
                         <div class="card-action">
                             <button type="submit" class="btn btn-success">Submit</button>
