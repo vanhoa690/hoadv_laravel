@@ -27,6 +27,7 @@
                         <tr>
                             <th scope="col">ID</th>
                             <th scope="col">Title</th>
+                            <th scope="col">Thumbnail</th>
                             <th scope="col">Category</th>
                             <th scope="col">Genre</th>
                             <th scope="col">Active</th>
@@ -38,6 +39,8 @@
                             <tr>
                                 <td>{{ $movie->id }}</td>
                                 <td>{{ $movie->title }}</td>
+                                <td><img src="/storage/{{ $movie->thumbnail }}" width="60px"
+                                        alt="{{ $movie->title }}"></td>
                                 <td>{{ $movie->category->name }}</td>
                                 <td>{{ $movie->genre->name }}</td>
                                 <td>

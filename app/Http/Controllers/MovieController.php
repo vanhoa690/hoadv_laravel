@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Genre;
 use App\Models\Movie;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 
 class MovieController extends Controller
@@ -33,7 +34,14 @@ class MovieController extends Controller
      */
     public function store(Request $request)
     {
-        Movie::create($request->all());
+        $movie = $request->all();
+
+        if ($request->hasFile('thumbnail')) {
+            $filePath = Storage::disk('public')->put('thumbnails/', request()->file('thumbnail'));
+            $movie['thumbnail'] = $filePath;
+        }
+
+        Movie::create($movie);
         return redirect()->route('movies.index')->with('status', 'Movie Has Been inserted');
     }
 
@@ -63,7 +71,17 @@ class MovieController extends Controller
     public function update(Request $request, string $id)
     {
         $movie = Movie::find($id);
-        $movie->update($request->all());
+        $movieUpdate = $request->all();
+
+        if ($request->hasFile('thumbnail')) {
+            if (isset($movie->thumbnail)) {
+                Storage::disk('public')->delete($movie->thumbnail);
+            }
+            $filePath = Storage::disk('public')->put('thumbnails/', request()->file('thumbnail'));
+            $movieUpdate['thumbnail'] = $filePath;
+        }
+
+        $movie->update($movieUpdate);
         return redirect()->route('movies.index')->with('status', value: 'Movie Has Been Updated');
     }
 
@@ -72,7 +90,11 @@ class MovieController extends Controller
      */
     public function destroy(string $id)
     {
-        Movie::find($id)->delete();
+        $movie =  Movie::find($id);
+        if (isset($movie->thumbnail)) {
+            Storage::disk('public')->delete($movie->thumbnail);
+        }
+        $movie->delete();
         return redirect()->route('movies.index')->with('status', 'Movie Deleted');
     }
 }

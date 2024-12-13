@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <form method="POST" action="{{ route('movies.index') }}">
+                    <form method="POST" action="{{ route('movies.index') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="card-body">
                             <div class="form-group form-inline">
@@ -15,6 +15,10 @@
                                     <input type="text" class="form-control input-full" id="title" name="title"
                                         placeholder="Enter Title" />
                                 </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="thumbnail">Thumbnail</label>
+                                <input type="file" name="thumbnail" class="form-control-file" id="thumbnail" />
                             </div>
                             <div class="form-group">
                                 <label for="category">Category</label>

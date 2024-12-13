@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <form method="POST" action="{{ route('movies.update', $movie) }}">
+                    <form method="POST" action="{{ route('movies.update', $movie) }}" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="card-body">
@@ -16,6 +16,14 @@
                                     <input type="text" class="form-control input-full" id="title" name="title"
                                         value='{{ $movie->title }}' placeholder="Enter Title" />
                                 </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="thumbnail">Thumbnail</label>
+                                <input type="file" name="thumbnail" class="form-control-file" id="thumbnail" />
+                                <figure class="mt-2">
+                                    <img src="/storage/{{ $movie->thumbnail }}" alt="{{ $movie->title }}"
+                                        width="120px" />
+                                </figure>
                             </div>
                             <div class="form-group">
                                 <label for="category">Category</label>
