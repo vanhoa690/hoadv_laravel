@@ -6,17 +6,17 @@
             </div>
         @endif
         <div class="page-header">
-            <h3 class="fw-bold mb-3">Category List</h3>
+            <h3 class="fw-bold mb-3">Movie List</h3>
         </div>
         <div class="card">
             <div class="card-header">
                 <div class="card-title">
-                    <a href="{{ route('categories.create') }}">
+                    <a href="{{ route('movies.create') }}">
                         <button class="btn btn-secondary">
                             <span class="btn-label">
                                 <i class="fa fa-plus"></i>
                             </span>
-                            Add Category
+                            Add Movie
                         </button>
                     </a>
                 </div>
@@ -26,24 +26,24 @@
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
-                            <th scope="col">Name</th>
+                            <th scope="col">Title</th>
                             <th scope="col">Active</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($categories as $category)
+                        @foreach ($movies as $movie)
                             <tr>
-                                <td>{{ $category->id }}</td>
-                                <td>{{ $category->name }}</td>
+                                <td>{{ $movie->id }}</td>
+                                <td>{{ $movie->title }}</td>
                                 <td>
                                     <button type="button" class="btn btn-icon btn-round btn-success">
                                         <i class="fa fa-check"></i>
                                     </button>
                                 </td>
                                 <td>
-                                    <form action="{{ route('categories.destroy', $category->id) }}" method="POST">
-                                        <a href="{{ route('categories.edit', $category) }}"
+                                    <form action="{{ route('movies.destroy', $movie->id) }}" method="POST">
+                                        <a href="{{ route('movies.edit', $movie) }}"
                                             class="btn btn-primary text-white ml-3">Edit</a>
 
                                         @csrf
