@@ -12,4 +12,9 @@ class Movie extends Model
     protected $fillable = [
         'title',
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }
