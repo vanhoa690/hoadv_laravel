@@ -52,6 +52,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('genres.index') }}">
+                        <i class="fas fa-layer-group"></i>
+                        <p>Genre</p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('movies.index') }}">
                         <i class="fas fa-layer-group"></i>
                         <p>Movie</p>
