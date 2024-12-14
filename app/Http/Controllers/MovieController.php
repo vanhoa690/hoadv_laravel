@@ -37,7 +37,7 @@ class MovieController extends Controller
         $movie = $request->all();
 
         if ($request->hasFile('thumbnail')) {
-            $filePath = Storage::disk('public')->put('thumbnails/', request()->file('thumbnail'));
+            $filePath = Storage::disk('public')->put('thumbnails/movies/', request()->file('thumbnail'));
             $movie['thumbnail'] = $filePath;
         }
 
@@ -77,7 +77,7 @@ class MovieController extends Controller
             if (isset($movie->thumbnail)) {
                 Storage::disk('public')->delete($movie->thumbnail);
             }
-            $filePath = Storage::disk('public')->put('thumbnails/', request()->file('thumbnail'));
+            $filePath = Storage::disk('public')->put('thumbnails/movies', request()->file('thumbnail'));
             $movieUpdate['thumbnail'] = $filePath;
         }
 
