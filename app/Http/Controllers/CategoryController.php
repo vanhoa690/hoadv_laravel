@@ -12,7 +12,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories =  Category::latest()->get();
+        $categories =  Category::latest()->withCount(relations: 'movies')->get();
         return view('pages.categories.list', compact('categories'));
     }
 

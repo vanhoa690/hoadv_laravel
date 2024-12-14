@@ -12,7 +12,7 @@ class GenreController extends Controller
      */
     public function index()
     {
-        $genres =  Genre::latest()->get();
+        $genres =  Genre::latest()->withCount(relations: 'movies')->get();
         return view('pages.genres.list', compact('genres'));
     }
 
