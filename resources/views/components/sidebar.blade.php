@@ -69,6 +69,12 @@
                         <p>Episode</p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('tags.index') }}">
+                        <i class="fas fa-layer-group"></i>
+                        <p>Tag</p>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

@@ -48,6 +48,16 @@
                                     @endforeach
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label for="tags">Tags</label>
+                                <select multiple class="form-control" id="tags" name="tags[]">
+                                    @foreach ($tags as $tag)
+                                        <option value="{{ $tag->id }}" name="tags[]"
+                                            {{ old('tags', $movie->tags)->contains($tag->id) ? 'selected' : '' }}>
+                                            {{ $tag->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
                         <div class="card-action">
                             <button type="submit" class="btn btn-success">Submit</button>

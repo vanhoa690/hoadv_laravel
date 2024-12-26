@@ -6,17 +6,17 @@
             </div>
         @endif
         <div class="page-header">
-            <h3 class="fw-bold mb-3">Movie List</h3>
+            <h3 class="fw-bold mb-3">Tag List</h3>
         </div>
         <div class="card">
             <div class="card-header">
                 <div class="card-title">
-                    <a href="{{ route('movies.create') }}">
+                    <a href="{{ route('tags.create') }}">
                         <button class="btn btn-secondary">
                             <span class="btn-label">
                                 <i class="fa fa-plus"></i>
                             </span>
-                            Add Movie
+                            Add Tag
                         </button>
                     </a>
                 </div>
@@ -26,37 +26,24 @@
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
-                            <th scope="col">Title</th>
-                            <th scope="col">Thumbnail</th>
-                            <th scope="col">Category</th>
-                            <th scope="col">Genre</th>
-                            <th scope="col">Tags</th>
+                            <th scope="col">Name</th>
                             <th scope="col">Active</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($movies as $movie)
+                        @foreach ($tags as $tag)
                             <tr>
-                                <td>{{ $movie->id }}</td>
-                                <td>{{ $movie->title }}</td>
-                                <td><img src="/storage/{{ $movie->thumbnail }}" width="60px"
-                                        alt="{{ $movie->title }}"></td>
-                                <td>{{ $movie->category->name }}</td>
-                                <td>{{ $movie->genre->name }}</td>
-                                <td>
-                                    @foreach ($movie->tags as $tag)
-                                        <span>{{ $tag->name }}, </span>
-                                    @endforeach
-                                </td>
+                                <td>{{ $tag->id }}</td>
+                                <td>{{ $tag->name }}</td>
                                 <td>
                                     <button type="button" class="btn btn-icon btn-round btn-success">
                                         <i class="fa fa-check"></i>
                                     </button>
                                 </td>
                                 <td>
-                                    <form action="{{ route('movies.destroy', $movie->id) }}" method="POST">
-                                        <a href="{{ route('movies.edit', $movie) }}"
+                                    <form action="{{ route('tags.destroy', $tag->id) }}" method="POST">
+                                        <a href="{{ route('tags.edit', $tag) }}"
                                             class="btn btn-primary text-white ml-3">Edit</a>
 
                                         @csrf

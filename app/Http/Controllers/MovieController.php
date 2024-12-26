@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Genre;
 use App\Models\Movie;
+use App\Models\Tag;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,8 @@ class MovieController extends Controller
      */
     public function index()
     {
-        $movies =  Movie::latest()->get();
+        $movies =  Movie::with('tags')->latest()->get();
+        // return response()->json($movies);
         return view('pages.movies.list', compact('movies'));
     }
 
@@ -26,7 +28,8 @@ class MovieController extends Controller
     {
         $categories =  Category::latest()->get();
         $genres =  Genre::latest()->get();
-        return view("pages.movies.create", compact('categories', 'genres'));
+        $tags =  Tag::latest()->get();
+        return view("pages.movies.create", compact('categories', 'genres', 'tags'));
     }
 
     /**
@@ -40,8 +43,8 @@ class MovieController extends Controller
             $filePath = Storage::disk('public')->put('thumbnails/movies/', request()->file('thumbnail'));
             $movie['thumbnail'] = $filePath;
         }
-
-        Movie::create($movie);
+        $newMovie = Movie::create($movie);
+        $newMovie->tags()->attach($movie['tags']);
         return redirect()->route('movies.index')->with('status', 'Movie Has Been inserted');
     }
 
@@ -59,10 +62,12 @@ class MovieController extends Controller
      */
     public function edit(string $id)
     {
-        $movie =  Movie::find($id);
+        $movie =  Movie::with('tags')->find($id);
+        // return response()->json($movie);
         $categories =  Category::latest()->get();
         $genres =  Genre::latest()->get();
-        return view("pages.movies.edit", compact('movie', 'categories', 'genres'));
+        $tags =  Tag::latest()->get();
+        return view("pages.movies.edit", compact('movie', 'categories', 'genres', 'tags'));
     }
 
     /**
@@ -81,6 +86,7 @@ class MovieController extends Controller
             $movieUpdate['thumbnail'] = $filePath;
         }
 
+        $movie->tags()->sync($movieUpdate['tags']);
         $movie->update($movieUpdate);
         return redirect()->route('movies.index')->with('status', value: 'Movie Has Been Updated');
     }
@@ -94,6 +100,7 @@ class MovieController extends Controller
         if (isset($movie->thumbnail)) {
             Storage::disk('public')->delete($movie->thumbnail);
         }
+        $movie->tags()->detach($movie->tags);
         $movie->delete();
         return redirect()->route('movies.index')->with('status', 'Movie Deleted');
     }

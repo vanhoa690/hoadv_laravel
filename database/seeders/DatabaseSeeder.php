@@ -6,6 +6,8 @@ use App\Models\Category;
 use App\Models\Episode;
 use App\Models\Genre;
 use App\Models\Movie;
+use App\Models\MovieTag;
+use App\Models\Tag;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -24,7 +26,6 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        // Category::factory(10)->create();
         Category::factory(5)->sequence(
             [
                 "name" => "Phim Hài",
@@ -42,7 +43,6 @@ class DatabaseSeeder extends Seeder
                 "name" => "Phim Chiến tranh",
             ]
         )->create();
-        // Genre::factory(10)->create();
         Genre::factory(5)->sequence(
             [
                 "name" => "Phim Tình cảm",
@@ -117,6 +117,45 @@ class DatabaseSeeder extends Seeder
                 "title" => "Tập 01",
                 "link" => "https://www.youtube.com/watch?v=tzyQraH6W_8",
                 "movie_id" => 5,
+            ]
+        )->create();
+        Tag::factory(5)->sequence(
+            [
+                "name" => "phimhai1",
+            ],
+            [
+                "name" => "phimhai2",
+            ],
+            [
+                "name" => "phimhai3",
+            ],
+            [
+                "name" => "phimhai4",
+            ],
+            [
+                "name" => "phimhai5",
+            ]
+        )->create();
+        MovieTag::factory(5)->sequence(
+            [
+                "movie_id" => 1,
+                "tag_id" => 1,
+            ],
+            [
+                "movie_id" => 1,
+                "tag_id" => 2,
+            ],
+            [
+                "movie_id" => 2,
+                "tag_id" => 1,
+            ],
+            [
+                "movie_id" => 2,
+                "tag_id" => 2,
+            ],
+            [
+                "movie_id" => 3,
+                "tag_id" => 3,
             ]
         )->create();
     }
