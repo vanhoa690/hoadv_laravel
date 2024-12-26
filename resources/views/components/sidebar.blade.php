@@ -63,6 +63,12 @@
                         <p>Movie</p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('episodes.index') }}">
+                        <i class="fas fa-layer-group"></i>
+                        <p>Episode</p>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
