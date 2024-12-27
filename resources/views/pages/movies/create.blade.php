@@ -33,7 +33,7 @@
                                 <div class="selectgroup selectgroup-pills">
                                     @foreach ($genres as $genre)
                                         <label class="selectgroup-item">
-                                            <input type="checkbox" name="genre_id" value="{{ $genre->id }}"
+                                            <input type="checkbox" name="genres[]" value="{{ $genre->id }}"
                                                 class="selectgroup-input" />
                                             <span class="selectgroup-button">{{ $genre->name }}</span>
                                         </label>

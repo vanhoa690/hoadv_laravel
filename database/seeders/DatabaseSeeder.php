@@ -43,7 +43,8 @@ class DatabaseSeeder extends Seeder
                 "name" => "Phim Chiến tranh",
             ]
         )->create();
-        Genre::factory(5)->sequence(
+
+        $genres = Genre::factory(5)->sequence(
             [
                 "name" => "Phim Tình cảm",
             ],
@@ -60,38 +61,50 @@ class DatabaseSeeder extends Seeder
                 "name" => "Phim tiểu sử",
             ]
         )->create();
+        $tags = Tag::factory(5)->sequence(
+            [
+                "name" => "phimhai1",
+            ],
+            [
+                "name" => "phimhai2",
+            ],
+            [
+                "name" => "phimhai3",
+            ],
+            [
+                "name" => "phimhai4",
+            ],
+            [
+                "name" => "phimhai5",
+            ]
+        )->create();
         Movie::factory(5)->sequence(
             [
                 "title" => "Phim Tình cảm 1",
                 "thumbnail" => "thumbnails/movies/example1-300x300.jpg",
                 "category_id" => 1,
-                "genre_id" => 1,
             ],
             [
                 "title" => "Phim ca nhạc 2",
                 "thumbnail" => "thumbnails/movies/example1-300x300.jpg",
                 "category_id" => 2,
-                "genre_id" => 2,
             ],
             [
                 "title" => "Phim siêu anh hùng 3",
                 "thumbnail" => "thumbnails/movies/example1-300x300.jpg",
                 "category_id" => 3,
-                "genre_id" => 3,
             ],
             [
                 "title" => "Phim sử thi 4",
                 "thumbnail" => "thumbnails/movies/example1-300x300.jpg",
                 "category_id" => 4,
-                "genre_id" => 4,
             ],
             [
                 "title" => "Phim tiểu sử 5",
                 "thumbnail" => "thumbnails/movies/example1-300x300.jpg",
                 "category_id" => 5,
-                "genre_id" => 5,
             ]
-        )->create();
+        )->hasAttached($genres)->hasAttached($tags)->create();
         Episode::factory(5)->sequence(
             [
                 "title" => "Tập 01",
@@ -117,45 +130,6 @@ class DatabaseSeeder extends Seeder
                 "title" => "Tập 01",
                 "link" => "https://www.youtube.com/watch?v=tzyQraH6W_8",
                 "movie_id" => 5,
-            ]
-        )->create();
-        Tag::factory(5)->sequence(
-            [
-                "name" => "phimhai1",
-            ],
-            [
-                "name" => "phimhai2",
-            ],
-            [
-                "name" => "phimhai3",
-            ],
-            [
-                "name" => "phimhai4",
-            ],
-            [
-                "name" => "phimhai5",
-            ]
-        )->create();
-        MovieTag::factory(5)->sequence(
-            [
-                "movie_id" => 1,
-                "tag_id" => 1,
-            ],
-            [
-                "movie_id" => 1,
-                "tag_id" => 2,
-            ],
-            [
-                "movie_id" => 2,
-                "tag_id" => 1,
-            ],
-            [
-                "movie_id" => 2,
-                "tag_id" => 2,
-            ],
-            [
-                "movie_id" => 3,
-                "tag_id" => 3,
             ]
         )->create();
     }

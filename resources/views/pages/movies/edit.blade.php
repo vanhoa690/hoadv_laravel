@@ -40,9 +40,9 @@
                                 <div class="selectgroup selectgroup-pills">
                                     @foreach ($genres as $genre)
                                         <label class="selectgroup-item">
-                                            <input type="checkbox" name="genre_id" value="{{ $genre->id }}"
+                                            <input type="checkbox" name="genres[]" value="{{ $genre->id }}"
                                                 class="selectgroup-input"
-                                                {{ old('genre_id', $movie->genre_id) == $genre->id ? 'checked' : '' }} />
+                                                {{ old('genres', $movie->genres)->contains($genre->id) ? 'checked' : '' }} />
                                             <span class="selectgroup-button">{{ $genre->name }}</span>
                                         </label>
                                     @endforeach

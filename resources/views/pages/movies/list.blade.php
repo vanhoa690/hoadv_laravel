@@ -29,7 +29,7 @@
                             <th scope="col">Title</th>
                             <th scope="col">Thumbnail</th>
                             <th scope="col">Category</th>
-                            <th scope="col">Genre</th>
+                            <th scope="col">Genres</th>
                             <th scope="col">Tags</th>
                             <th scope="col">Active</th>
                             <th scope="col">Action</th>
@@ -43,7 +43,11 @@
                                 <td><img src="/storage/{{ $movie->thumbnail }}" width="60px"
                                         alt="{{ $movie->title }}"></td>
                                 <td>{{ $movie->category->name }}</td>
-                                <td>{{ $movie->genre->name }}</td>
+                                <td>
+                                    @foreach ($movie->genres as $genre)
+                                        <span>{{ $genre->name }}, </span>
+                                    @endforeach
+                                </td>
                                 <td>
                                     @foreach ($movie->tags as $tag)
                                         <span>{{ $tag->name }}, </span>

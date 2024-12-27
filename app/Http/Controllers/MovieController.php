@@ -16,7 +16,7 @@ class MovieController extends Controller
      */
     public function index()
     {
-        $movies =  Movie::with('tags')->latest()->get();
+        $movies =  Movie::with('tags', 'genres')->latest()->get();
         // return response()->json($movies);
         return view('pages.movies.list', compact('movies'));
     }
@@ -38,13 +38,13 @@ class MovieController extends Controller
     public function store(Request $request)
     {
         $movie = $request->all();
-
         if ($request->hasFile('thumbnail')) {
             $filePath = Storage::disk('public')->put('thumbnails/movies/', request()->file('thumbnail'));
             $movie['thumbnail'] = $filePath;
         }
         $newMovie = Movie::create($movie);
         $newMovie->tags()->attach($movie['tags']);
+        $newMovie->genres()->attach($movie['genres']);
         return redirect()->route('movies.index')->with('status', 'Movie Has Been inserted');
     }
 
@@ -87,6 +87,7 @@ class MovieController extends Controller
         }
 
         $movie->tags()->sync($movieUpdate['tags']);
+        $movie->genres()->sync($movieUpdate['genres']);
         $movie->update($movieUpdate);
         return redirect()->route('movies.index')->with('status', value: 'Movie Has Been Updated');
     }
