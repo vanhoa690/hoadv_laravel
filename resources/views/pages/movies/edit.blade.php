@@ -10,16 +10,24 @@
                         @csrf
                         @method('PUT')
                         <div class="card-body">
-                            <div class="form-group form-inline">
+                            <div class="form-group form-inline @error('title') has-error @enderror">
                                 <label for="title" class="col-md-3 col-form-label">Title</label>
                                 <div class="col-md-9 p-0">
                                     <input type="text" class="form-control input-full" id="title" name="title"
                                         value='{{ $movie->title }}' placeholder="Enter Title" />
                                 </div>
+                                @error('title')
+                                    <small class="form-text text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
-                            <div class="form-group">
+                            <div class="form-group @error('thumbnail') has-error @enderror">
                                 <label for="thumbnail">Thumbnail</label>
                                 <input type="file" name="thumbnail" class="form-control-file" id="thumbnail" />
+                                <div>
+                                    @error('thumbnail')
+                                        <small class="form-text text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
                                 <figure class="mt-2">
                                     <img src="/storage/{{ $movie->thumbnail }}" alt="{{ $movie->title }}"
                                         width="120px" />
@@ -35,7 +43,7 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group @error('genres') has-error @enderror">
                                 <label class="form-label">Genres</label>
                                 <div class="selectgroup selectgroup-pills">
                                     @foreach ($genres as $genre)
@@ -47,8 +55,11 @@
                                         </label>
                                     @endforeach
                                 </div>
+                                @error('genres')
+                                    <small class="form-text text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
-                            <div class="form-group">
+                            <div class="form-group @error('tags') has-error @enderror">
                                 <label for="tags">Tags</label>
                                 <select multiple class="form-control" id="tags" name="tags[]">
                                     @foreach ($tags as $tag)
@@ -57,6 +68,9 @@
                                             {{ $tag->name }}</option>
                                     @endforeach
                                 </select>
+                                @error('tags')
+                                    <small class="form-text text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
                         </div>
                         <div class="card-action">

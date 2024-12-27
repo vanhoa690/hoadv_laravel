@@ -37,14 +37,20 @@ class MovieController extends Controller
      */
     public function store(Request $request)
     {
-        $movie = $request->all();
+        $validated = $request->validate([
+            'title' => 'required|max:255',
+            'thumbnail' => 'required|image|mimes:jpeg,jpg,png,gif|max:2000',
+            'category_id' => 'required',
+            "tags" => 'required|array',
+            "genres" => 'required|array',
+        ]);
         if ($request->hasFile('thumbnail')) {
             $filePath = Storage::disk('public')->put('thumbnails/movies/', request()->file('thumbnail'));
-            $movie['thumbnail'] = $filePath;
+            $validated['thumbnail'] = $filePath;
         }
-        $newMovie = Movie::create($movie);
-        $newMovie->tags()->attach($movie['tags']);
-        $newMovie->genres()->attach($movie['genres']);
+        $newMovie = Movie::create($validated);
+        $newMovie->tags()->attach($validated['tags']);
+        $newMovie->genres()->attach($validated['genres']);
         return redirect()->route('movies.index')->with('status', 'Movie Has Been inserted');
     }
 
@@ -76,19 +82,24 @@ class MovieController extends Controller
     public function update(Request $request, string $id)
     {
         $movie = Movie::find($id);
-        $movieUpdate = $request->all();
-
+        $validated = $request->validate([
+            'title' => 'required|max:255',
+            'thumbnail' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2000',
+            'category_id' => 'required',
+            "tags" => 'required|array',
+            "genres" => 'required|array',
+        ]);
         if ($request->hasFile('thumbnail')) {
             if (isset($movie->thumbnail)) {
                 Storage::disk('public')->delete($movie->thumbnail);
             }
             $filePath = Storage::disk('public')->put('thumbnails/movies', request()->file('thumbnail'));
-            $movieUpdate['thumbnail'] = $filePath;
+            $validated['thumbnail'] = $filePath;
         }
 
-        $movie->tags()->sync($movieUpdate['tags']);
-        $movie->genres()->sync($movieUpdate['genres']);
-        $movie->update($movieUpdate);
+        $movie->tags()->sync($validated['tags']);
+        $movie->genres()->sync($validated['genres']);
+        $movie->update($validated);
         return redirect()->route('movies.index')->with('status', value: 'Movie Has Been Updated');
     }
 
