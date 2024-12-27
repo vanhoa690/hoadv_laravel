@@ -16,7 +16,7 @@ class MovieController extends Controller
      */
     public function index()
     {
-        $movies =  Movie::with('tags', 'genres')->latest()->get();
+        $movies =  Movie::latest()->get();
         // return response()->json($movies);
         return view('pages.movies.list', compact('movies'));
     }
@@ -62,7 +62,7 @@ class MovieController extends Controller
      */
     public function edit(string $id)
     {
-        $movie =  Movie::with('tags')->find($id);
+        $movie =  Movie::find($id);
         // return response()->json($movie);
         $categories =  Category::latest()->get();
         $genres =  Genre::latest()->get();
@@ -102,6 +102,7 @@ class MovieController extends Controller
             Storage::disk('public')->delete($movie->thumbnail);
         }
         $movie->tags()->detach($movie->tags);
+        $movie->genres()->detach($movie->genres);
         $movie->delete();
         return redirect()->route('movies.index')->with('status', 'Movie Deleted');
     }

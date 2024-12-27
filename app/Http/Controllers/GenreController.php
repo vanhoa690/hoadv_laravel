@@ -29,7 +29,10 @@ class GenreController extends Controller
      */
     public function store(Request $request)
     {
-        Genre::create($request->all());
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+        ]);
+        Genre::create($validated);
         return redirect()->route('genres.index')->with('status', 'Genre Has Been inserted');
     }
 
@@ -57,7 +60,10 @@ class GenreController extends Controller
     public function update(Request $request, string $id)
     {
         $genre = Genre::find($id);
-        $genre->update($request->all());
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+        ]);
+        $genre->update($validated);
         return redirect()->route('genres.index')->with('status', value: 'Genre Has Been Updated');
     }
 

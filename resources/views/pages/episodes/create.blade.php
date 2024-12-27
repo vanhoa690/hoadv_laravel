@@ -9,19 +9,25 @@
                     <form method="POST" action="{{ route('episodes.index') }}">
                         @csrf
                         <div class="card-body">
-                            <div class="form-group form-inline">
+                            <div class="form-group form-inline @error('title') has-error @enderror">
                                 <label for="title" class="col-md-3 col-form-label">Title</label>
                                 <div class="col-md-9 p-0">
                                     <input type="text" class="form-control input-full" id="title" name="title"
                                         placeholder="Enter Title" />
                                 </div>
+                                @error('title')
+                                    <small class="form-text text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
-                            <div class="form-group form-inline">
+                            <div class="form-group form-inline @error('link') has-error @enderror">
                                 <label for="link" class="col-md-3 col-form-label">Link</label>
                                 <div class="col-md-9 p-0">
                                     <input type="text" class="form-control input-full" id="link" name="link"
                                         placeholder="Enter Link" />
                                 </div>
+                                @error('link')
+                                    <small class="form-text text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="movie">Movie</label>

@@ -31,6 +31,7 @@
                             <th scope="col">Category</th>
                             <th scope="col">Genres</th>
                             <th scope="col">Tags</th>
+                            <th scope="col">Episodes</th>
                             <th scope="col">Active</th>
                             <th scope="col">Action</th>
                         </tr>
@@ -51,6 +52,12 @@
                                 <td>
                                     @foreach ($movie->tags as $tag)
                                         <span>{{ $tag->name }}, </span>
+                                    @endforeach
+                                </td>
+                                <td>
+                                    @foreach ($movie->episodes as $episode)
+                                        <span><a href="{{ route('episodes.edit', $episode) }}"> {{ $episode->title }}
+                                            </a> | </span>
                                     @endforeach
                                 </td>
                                 <td>

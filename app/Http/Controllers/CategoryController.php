@@ -29,7 +29,10 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $category = Category::create($request->all());
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+        ]);
+        Category::create($validated);
         return redirect()->route('categories.index')->with('status', 'Category Has Been inserted');
     }
 
@@ -57,7 +60,10 @@ class CategoryController extends Controller
     public function update(Request $request, string $id)
     {
         $category = Category::find($id);
-        $category->update($request->all());
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+        ]);
+        $category->update($validated);
         return redirect()->route('categories.index')->with('status', value: 'Category Has Been Updated');
     }
 

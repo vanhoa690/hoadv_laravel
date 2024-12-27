@@ -9,12 +9,15 @@
                     <form method="POST" action="{{ route('genres.index') }}">
                         @csrf
                         <div class="card-body">
-                            <div class="form-group form-inline">
+                            <div class="form-group form-inline @error('name') has-error @enderror">
                                 <label for="name" class="col-md-3 col-form-label">Name</label>
                                 <div class="col-md-9 p-0">
                                     <input type="text" class="form-control input-full" id="name" name="name"
                                         placeholder="Enter Name" />
                                 </div>
+                                @error('name')
+                                    <small class="form-text text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
                         </div>
                         <div class="card-action">

@@ -29,7 +29,10 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        $tag = Tag::create($request->all());
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+        ]);
+        Tag::create($validated);
         return redirect()->route('tags.index')->with('status', 'Tag Has Been inserted');
     }
 
@@ -57,7 +60,10 @@ class TagController extends Controller
     public function update(Request $request, string $id)
     {
         $tag = Tag::find($id);
-        $tag->update($request->all());
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+        ]);
+        $tag->update($validated);
         return redirect()->route('tags.index')->with('status', value: 'Tag Has Been Updated');
     }
 

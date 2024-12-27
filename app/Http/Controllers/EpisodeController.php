@@ -31,8 +31,12 @@ class EpisodeController extends Controller
      */
     public function store(Request $request)
     {
-        $episode = $request->all();
-        Episode::create($episode);
+        $validated = $request->validate([
+            'title' => 'required|max:255',
+            'link' => 'required|max:255',
+            'movie_id' => 'required',
+        ]);
+        Episode::create($validated);
         return redirect()->route('episodes.index')->with('status', 'Episode Has Been inserted');
     }
 
@@ -61,9 +65,12 @@ class EpisodeController extends Controller
     public function update(Request $request, string $id)
     {
         $episode = Episode::find($id);
-        $episodeUpdate = $request->all();
-
-        $episode->update($episodeUpdate);
+        $validated = $request->validate([
+            'title' => 'required|max:255',
+            'link' => 'required|max:255',
+            'movie_id' => 'required',
+        ]);
+        $episode->update($validated);
         return redirect()->route('episodes.index')->with('status', value: 'Episode Has Been Updated');
     }
 
