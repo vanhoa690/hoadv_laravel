@@ -33,7 +33,9 @@
                                 <label for="movie">Movie</label>
                                 <select class="form-select form-control" id="movie" name="movie_id">
                                     @foreach ($movies as $movie)
-                                        <option value="{{ $movie->id }}">{{ $movie->title }}</option>
+                                        <option value="{{ $movie->id }}"
+                                            @if (isset($movie_query)) {{ old('movie_id', $movie_query->id) == $movie->id ? 'selected' : '' }} @endif>
+                                            {{ $movie->title }}</option>
                                     @endforeach
                                 </select>
                             </div>

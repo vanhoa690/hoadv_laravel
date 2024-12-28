@@ -55,9 +55,11 @@
                                         </label>
                                     @endforeach
                                 </div>
-                                @error('genres')
-                                    <small class="form-text text-danger">{{ $message }}</small>
-                                @enderror
+                                <div>
+                                    @error('genres')
+                                        <small class="form-text text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
                             </div>
                             <div class="form-group @error('tags') has-error @enderror">
                                 <label for="tags">Tags</label>

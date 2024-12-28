@@ -19,6 +19,7 @@ class MovieFactory extends Factory
         return [
             'title' => fake()->title(),
             'thumbnail' => fake()->imageUrl(),
+            'view' => fake()->randomNumber(),
         ];
     }
 }

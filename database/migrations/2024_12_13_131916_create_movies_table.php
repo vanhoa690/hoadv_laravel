@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string(column: "title");
             $table->string(column: "thumbnail");
+            $table->integer(column: "view")->default(0);
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });

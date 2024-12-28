@@ -39,7 +39,10 @@
                                 <td>{{ $episode->id }}</td>
                                 <td>{{ $episode->title }}</td>
                                 <td>{{ $episode->link }}</td>
-                                <td>{{ $episode->movie->title }}</td>
+                                <td>
+                                    <a href="{{ route('movies.index', ['movie_id' => $episode->movie->id]) }}">
+                                        {{ $episode->movie->title }}</a>
+                                </td>
                                 <td>
                                     <button type="button" class="btn btn-icon btn-round btn-success">
                                         <i class="fa fa-check"></i>
@@ -47,6 +50,8 @@
                                 </td>
                                 <td>
                                     <form action="{{ route('episodes.destroy', $episode->id) }}" method="POST">
+                                        <a href="{{ route('episodes.create', ['movie_id' => $episode->movie->id]) }}"
+                                            class="btn btn-primary text-white ml-3">Add</a>
                                         <a href="{{ route('episodes.edit', $episode) }}"
                                             class="btn btn-primary text-white ml-3">Edit</a>
 

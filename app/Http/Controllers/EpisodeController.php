@@ -11,19 +11,25 @@ class EpisodeController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $episodes =  Episode::latest()->get();
+        $movie_id = $request->query("movie_id");
+        $episodes = $movie_id  ?  Episode::where('movie_id', $movie_id)->get() : Episode::latest()->get();
         return view('pages.episodes.list', compact('episodes'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
         $movies =  Movie::latest()->get();
-        return view("pages.episodes.create", compact('movies'));
+        $movie_id = $request->query("movie_id");
+        $movie_query = null;
+        if ($movie_id) {
+            $movie_query =  Movie::find($movie_id);
+        }
+        return view("pages.episodes.create", compact('movies', 'movie_query'));
     }
 
     /**

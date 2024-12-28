@@ -14,9 +14,10 @@ class MovieController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $movies =  Movie::latest()->get();
+        $movie_id = $request->query("movie_id");
+        $movies = $movie_id  ?  Movie::where('id', $movie_id)->get() : Movie::latest()->get();
         // return response()->json($movies);
         return view('pages.movies.list', compact('movies'));
     }
