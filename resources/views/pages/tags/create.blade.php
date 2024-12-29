@@ -13,7 +13,7 @@
                                 <label for="name" class="col-md-3 col-form-label">Name</label>
                                 <div class="col-md-9 p-0">
                                     <input type="text" class="form-control input-full" id="name" name="name"
-                                        placeholder="Enter Name" />
+                                        placeholder="Enter Name" value="{{ old('name') }}" />
                                 </div>
                                 @error('name')
                                     <small class="form-text text-danger">{{ $message }}</small>

@@ -13,7 +13,7 @@
                                 <label for="title" class="col-md-3 col-form-label">Title</label>
                                 <div class="col-md-9 p-0">
                                     <input type="text" class="form-control input-full" id="title" name="title"
-                                        placeholder="Enter Title" />
+                                        placeholder="Enter Title" value="{{ old('title') }}" />
                                 </div>
                                 @error('title')
                                     <small class="form-text text-danger">{{ $message }}</small>
@@ -32,7 +32,9 @@
                                 <label for="category">Category</label>
                                 <select class="form-select form-control" id="category" name="category_id">
                                     @foreach ($categories as $category)
-                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        <option value="{{ $category->id }}"
+                                            {{ old('category_id') == $category->id ? 'selected' : '' }}>
+                                            {{ $category->name }}</option>
                                     @endforeach
                                 </select>
                             </div>

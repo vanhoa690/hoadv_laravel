@@ -71,8 +71,10 @@
                                 </td>
                                 <td>
                                     <form action="{{ route('movies.destroy', $movie->id) }}" method="POST">
+                                        <a href="{{ route('movies.show', $movie) }}"
+                                            class="btn btn-primary text-white ml-3">View</a>
                                         <a href="{{ route('episodes.create', ['movie_id' => $movie->id]) }}"
-                                            class="btn btn-primary text-white ml-3">Add Episode</a>
+                                            class="btn btn-primary text-white ml-3">Add-Ep</a>
                                         <a href="{{ route('movies.edit', $movie) }}"
                                             class="btn btn-primary text-white ml-3">Edit</a>
 

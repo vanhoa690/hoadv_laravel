@@ -40,6 +40,7 @@ class EpisodeController extends Controller
         $validated = $request->validate([
             'title' => 'required|max:255',
             'link' => 'required|max:255',
+            'view' => 'nullable|numeric|min:0',
             'movie_id' => 'required',
         ]);
         Episode::create($validated);
@@ -52,7 +53,8 @@ class EpisodeController extends Controller
     public function show(string $id)
     {
         $episode =  Episode::find($id);
-        return view("pages.episodes.edit", compact('episode'));
+        Episode::where('id', $id)->increment('view');
+        return view("pages.episodes.show", compact('episode'));
     }
 
     /**
@@ -74,6 +76,7 @@ class EpisodeController extends Controller
         $validated = $request->validate([
             'title' => 'required|max:255',
             'link' => 'required|max:255',
+            'view' => 'nullable|numeric|min:0',
             'movie_id' => 'required',
         ]);
         $episode->update($validated);

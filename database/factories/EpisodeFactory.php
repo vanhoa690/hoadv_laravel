@@ -19,6 +19,7 @@ class EpisodeFactory extends Factory
         return [
             'title' => fake()->title(),
             'link' => fake()->url(),
+            'view' => fake()->randomNumber(),
         ];
     }
 }

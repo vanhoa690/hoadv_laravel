@@ -28,6 +28,7 @@
                             <th scope="col">ID</th>
                             <th scope="col">Title</th>
                             <th scope="col">Link</th>
+                            <th scope="col">View</th>
                             <th scope="col">Movie</th>
                             <th scope="col">Active</th>
                             <th scope="col">Action</th>
@@ -39,6 +40,7 @@
                                 <td>{{ $episode->id }}</td>
                                 <td>{{ $episode->title }}</td>
                                 <td>{{ $episode->link }}</td>
+                                <td>{{ $episode->view }} views</td>
                                 <td>
                                     <a href="{{ route('movies.index', ['movie_id' => $episode->movie->id]) }}">
                                         {{ $episode->movie->title }}</a>
@@ -50,6 +52,8 @@
                                 </td>
                                 <td>
                                     <form action="{{ route('episodes.destroy', $episode->id) }}" method="POST">
+                                        <a href="{{ route('episodes.show', $episode) }}"
+                                            class="btn btn-primary text-white ml-3">View</a>
                                         <a href="{{ route('episodes.create', ['movie_id' => $episode->movie->id]) }}"
                                             class="btn btn-primary text-white ml-3">Add</a>
                                         <a href="{{ route('episodes.edit', $episode) }}"

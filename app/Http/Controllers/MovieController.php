@@ -41,6 +41,7 @@ class MovieController extends Controller
         $validated = $request->validate([
             'title' => 'required|max:255',
             'thumbnail' => 'required|image|mimes:jpeg,jpg,png,gif|max:2000',
+            'view' => 'nullable|numeric|min:0',
             'category_id' => 'required',
             "tags" => 'required|array',
             "genres" => 'required|array',
@@ -61,7 +62,8 @@ class MovieController extends Controller
     public function show(string $id)
     {
         $movie =  Movie::find($id);
-        return view("pages.movies.edit", compact('movie'));
+        Movie::where('id', $id)->increment('view');
+        return view("pages.movies.show", compact('movie'));
     }
 
     /**
@@ -86,6 +88,7 @@ class MovieController extends Controller
         $validated = $request->validate([
             'title' => 'required|max:255',
             'thumbnail' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2000',
+            'view' => 'nullable|numeric|min:0',
             'category_id' => 'required',
             "tags" => 'required|array',
             "genres" => 'required|array',

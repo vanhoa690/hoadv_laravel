@@ -13,6 +13,7 @@ class Episode extends Model
     protected $fillable = [
         'title',
         'link',
+        'view',
         'movie_id',
     ];
 

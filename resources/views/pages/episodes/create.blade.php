@@ -29,6 +29,16 @@
                                     <small class="form-text text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
+                            <div class="form-group form-inline @error('view') has-error @enderror">
+                                <label for="view" class="col-md-3 col-form-label">View</label>
+                                <div class="col-md-9 p-0">
+                                    <input type="number" class="form-control input-full" id="view" name="view"
+                                        placeholder="Enter View" />
+                                </div>
+                                @error('view')
+                                    <small class="form-text text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
                             <div class="form-group">
                                 <label for="movie">Movie</label>
                                 <select class="form-select form-control" id="movie" name="movie_id">
