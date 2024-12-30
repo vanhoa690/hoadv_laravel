@@ -29,6 +29,7 @@
                             <th scope="col">Title</th>
                             <th scope="col">Thumbnail</th>
                             <th scope="col">View</th>
+                            <th scope="col">Description</th>
                             <th scope="col">Category</th>
                             <th scope="col">Genres</th>
                             <th scope="col">Tags</th>
@@ -45,6 +46,7 @@
                                 <td><img src="/storage/{{ $movie->thumbnail }}" width="60px"
                                         alt="{{ $movie->title }}"></td>
                                 <td>{{ $movie->view }} views</td>
+                                <td>{{ $movie->description }}</td>
                                 <td>{{ $movie->category->name }}</td>
                                 <td>
                                     @foreach ($movie->genres as $genre)
@@ -65,8 +67,9 @@
                                     @endforeach
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-icon btn-round btn-success">
-                                        <i class="fa fa-check"></i>
+                                    <button type="button"
+                                        class="btn btn-icon btn-round {{ $movie->active == true ? 'btn-success' : 'btn-danger' }}">
+                                        <i class="fa {{ $movie->active == true ? 'fa-check' : 'fa-archive' }} "></i>
                                     </button>
                                 </td>
                                 <td>

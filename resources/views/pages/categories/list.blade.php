@@ -39,8 +39,9 @@
                                 <td>{{ $category->name }}</td>
                                 <td>{{ $category->movies_count }} phim</td>
                                 <td>
-                                    <button type="button" class="btn btn-icon btn-round btn-success">
-                                        <i class="fa fa-check"></i>
+                                    <button type="button"
+                                        class="btn btn-icon btn-round {{ $category->active == true ? 'btn-success' : 'btn-danger' }}">
+                                        <i class="fa {{ $category->active == true ? 'fa-check' : 'fa-archive' }} "></i>
                                     </button>
                                 </td>
                                 <td>

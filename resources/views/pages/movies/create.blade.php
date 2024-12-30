@@ -29,6 +29,35 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                <label>Active</label><br />
+                                <div class="d-flex">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="active" id="active"
+                                            checked value="1" />
+                                        <label class="form-check-label" for="active">
+                                            Active
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="active" id="disable"
+                                            value="0" />
+                                        <label class="form-check-label" for="disable">
+                                            Disable
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group form-inline @error('view') has-error @enderror">
+                                <label for="title" class="col-md-3 col-form-label">View</label>
+                                <div class="col-md-9 p-0">
+                                    <input type="text" class="form-control input-full" id="view" name="view"
+                                        placeholder="Enter View" value="{{ old('view') }}" />
+                                </div>
+                                @error('view')
+                                    <small class="form-text text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+                            <div class="form-group">
                                 <label for="category">Category</label>
                                 <select class="form-select form-control" id="category" name="category_id">
                                     @foreach ($categories as $category)

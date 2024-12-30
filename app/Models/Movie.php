@@ -14,7 +14,9 @@ class Movie extends Model
     protected $fillable = [
         'title',
         'thumbnail',
+        'active',
         'view',
+        'description',
         'category_id',
     ];
 

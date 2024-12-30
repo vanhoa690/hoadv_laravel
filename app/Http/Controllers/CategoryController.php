@@ -13,6 +13,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories =  Category::latest()->withCount(relations: 'movies')->get();
+        // return response()->json($categories);
         return view('pages.categories.list', compact('categories'));
     }
 
@@ -31,7 +32,9 @@ class CategoryController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|max:255',
+            'active' => 'required',
         ]);
+        // return response()->json($validated);
         Category::create($validated);
         return redirect()->route('categories.index')->with('status', 'Category Has Been inserted');
     }
@@ -62,6 +65,7 @@ class CategoryController extends Controller
         $category = Category::find($id);
         $validated = $request->validate([
             'name' => 'required|max:255',
+            'active' => 'required',
         ]);
         $category->update($validated);
         return redirect()->route('categories.index')->with('status', value: 'Category Has Been Updated');

@@ -19,6 +19,25 @@
                                     <small class="form-text text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
+                            <div class="form-group">
+                                <label>Active</label><br />
+                                <div class="d-flex">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="active" id="active"
+                                            checked value="1" />
+                                        <label class="form-check-label" for="active">
+                                            Active
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="active" id="disable"
+                                            value="0" />
+                                        <label class="form-check-label" for="disable">
+                                            Disable
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="card-action">
                             <button type="submit" class="btn btn-success">Submit</button>

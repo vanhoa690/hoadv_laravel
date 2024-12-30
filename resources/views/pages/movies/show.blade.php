@@ -64,8 +64,9 @@
                                 @endforeach
                             </td>
                             <td>
-                                <button type="button" class="btn btn-icon btn-round btn-success">
-                                    <i class="fa fa-check"></i>
+                                <button type="button"
+                                    class="btn btn-icon btn-round {{ $movie->active == true ? 'btn-success' : 'btn-danger' }}">
+                                    <i class="fa {{ $movie->active == true ? 'fa-check' : 'fa-archive' }} "></i>
                                 </button>
                             </td>
                         </tr>
