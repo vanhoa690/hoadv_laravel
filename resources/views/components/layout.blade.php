@@ -41,9 +41,6 @@
     <!-- jQuery Scrollbar -->
     <script src={{ asset('assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js') }}></script>
 
-    <!-- Chart JS -->
-    {{-- <script src={{ asset('assets/js/plugin/chart.js/chart.min.js') }}></script> --}}
-
     <!-- jQuery Sparkline -->
     <script src={{ asset('assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js') }}></script>
 
@@ -62,9 +59,11 @@
 
     <!-- Sweet Alert -->
     <script src={{ asset('assets/js/plugin/sweetalert/sweetalert.min.js') }}></script>
-
-    <!-- Kaiadmin JS -->
-    {{-- <script src={{ asset('assets/js/kaiadmin.min.js') }}></script> --}}
+    <script>
+        $(document).ready(function() {
+            $("#basic-datatables").DataTable({});
+        });
+    </script>
 </body>
 
 </html>

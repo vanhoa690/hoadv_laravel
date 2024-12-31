@@ -17,7 +17,7 @@ class MovieController extends Controller
     public function index(Request $request)
     {
         $movie_id = $request->query("movie_id");
-        $movies = $movie_id  ?  Movie::where('id', $movie_id)->get() : Movie::latest()->get();
+        $movies = $movie_id  ?  Movie::where('id', $movie_id)->get() : Movie::orderBy("id", "ASC")->latest()->get();
         // return response()->json($movies);
         return view('pages.movies.list', compact('movies'));
     }

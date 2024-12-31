@@ -28,13 +28,13 @@ class DatabaseSeeder extends Seeder
 
         Category::factory(5)->sequence(
             [
-                "name" => "Phim Hài",
+                "name" => "Phim Hoạt Hình",
             ],
             [
-                "name" => "Phim khoa học viễn tưởng",
+                "name" => "Phim Chuyển Sinh",
             ],
             [
-                "name" => "Phim kinh dị",
+                "name" => "Phim Chuyển Thể",
             ],
             [
                 "name" => "Phim Viễn Tây",
@@ -78,32 +78,122 @@ class DatabaseSeeder extends Seeder
                 "name" => "phimhai5",
             ]
         )->create();
-        Movie::factory(5)->sequence(
+        Movie::factory(50)->sequence(
             [
-                "title" => "Phim Tình cảm 1",
+                "title" => "Hành Trình Từ Kẻ Ngốc Trở Thành Tỷ Phú",
                 "thumbnail" => "thumbnails/movies/example1-300x300.jpg",
                 "category_id" => 1,
             ],
             [
-                "title" => "Phim ca nhạc 2",
+                "title" => "Đảo Hải Tặc - One Piece",
                 "thumbnail" => "thumbnails/movies/example1-300x300.jpg",
                 "category_id" => 2,
             ],
             [
-                "title" => "Phim siêu anh hùng 3",
+                "title" => "One Punch Man",
                 "thumbnail" => "thumbnails/movies/example1-300x300.jpg",
                 "category_id" => 3,
             ],
             [
-                "title" => "Phim sử thi 4",
+                "title" => "7 Viên Ngọc Rồng",
                 "thumbnail" => "thumbnails/movies/example1-300x300.jpg",
                 "category_id" => 4,
             ],
             [
-                "title" => "Phim tiểu sử 5",
+                "title" => "Naruto",
+                "thumbnail" => "thumbnails/movies/example1-300x300.jpg",
+                "category_id" => 1,
+            ],
+            [
+                "title" => "Dr. Stone",
                 "thumbnail" => "thumbnails/movies/example1-300x300.jpg",
                 "category_id" => 5,
-            ]
+            ],
+            [
+                "title" => "Boruto",
+                "thumbnail" => "thumbnails/movies/example1-300x300.jpg",
+                "category_id" => 5,
+            ],
+            [
+                "title" => "Thanh Gươm Diệt Quỷ - Kimetsu no Yaiba",
+                "thumbnail" => "thumbnails/movies/example1-300x300.jpg",
+                "category_id" => 5,
+            ],
+            [
+                "title" => "Đại Chiến Người Khủng Lồ Titan",
+                "thumbnail" => "thumbnails/movies/example1-300x300.jpg",
+                "category_id" => 5,
+            ],
+            [
+                "title" => "Death Note",
+                "thumbnail" => "thumbnails/movies/example1-300x300.jpg",
+                "category_id" => 5,
+            ],
+            [
+                "title" => "Đại Xà Tu Tiên",
+                "thumbnail" => "thumbnails/movies/example1-300x300.jpg",
+                "category_id" => 5,
+            ],
+            [
+                "title" => "Chuyển Sinh Thành Goblin",
+                "thumbnail" => "thumbnails/movies/example1-300x300.jpg",
+                "category_id" => 5,
+            ],
+            [
+                "title" => "Chàng Rể Mạnh Nhất Lịch Sử",
+                "thumbnail" => "thumbnails/movies/example1-300x300.jpg",
+                "category_id" => 1,
+            ],
+            [
+                "title" => "Đại Quản Gia Là Ma Hoàng",
+                "thumbnail" => "thumbnails/movies/example1-300x300.jpg",
+                "category_id" => 1,
+            ],
+            [
+                "title" => "Naruto",
+                "thumbnail" => "thumbnails/movies/example1-300x300.jpg",
+                "category_id" => 1,
+            ],
+            [
+                "title" => "Phàm Nhân Tu Tiên",
+                "thumbnail" => "thumbnails/movies/example1-300x300.jpg",
+                "category_id" => 1,
+            ],
+            [
+                "title" => "Thôn Phệ Tinh Không",
+                "thumbnail" => "thumbnails/movies/example1-300x300.jpg",
+                "category_id" => 1,
+            ],
+            [
+                "title" => "Tinh Thần Biến",
+                "thumbnail" => "thumbnails/movies/example1-300x300.jpg",
+                "category_id" => 1,
+            ],
+            [
+                "title" => "Thế giới hoàn mỹ",
+                "thumbnail" => "thumbnails/movies/example1-300x300.jpg",
+                "category_id" => 1,
+            ],
+            [
+                "title" => "Vũ Động Càn Khôn",
+                "thumbnail" => "thumbnails/movies/example1-300x300.jpg",
+                "category_id" => 1,
+            ],
+            [
+                "title" => "Đấu La Đại Lục",
+                "thumbnail" => "thumbnails/movies/example1-300x300.jpg",
+                "category_id" => 1,
+            ],
+            [
+                "title" => "Nhất Niệm Vĩnh Hằng",
+                "thumbnail" => "thumbnails/movies/example1-300x300.jpg",
+                "category_id" => 1,
+            ],
+            [
+                "title" => "Tru Tiên",
+                "thumbnail" => "thumbnails/movies/example1-300x300.jpg",
+                "category_id" => 1,
+            ],
         )->hasAttached($genres)->hasAttached($tags)->create();
         Episode::factory(5)->sequence(
             [

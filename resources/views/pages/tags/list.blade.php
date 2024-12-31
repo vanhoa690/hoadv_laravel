@@ -22,42 +22,51 @@
                 </div>
             </div>
             <div class="card-body">
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Active</th>
-                            <th scope="col">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($tags as $tag)
+                <div class="table-responsive">
+                    <table id="basic-datatables" class="display table table-striped table-hover">
+                        <thead>
                             <tr>
-                                <td>{{ $tag->id }}</td>
-                                <td>{{ $tag->name }}</td>
-                                <td>
-                                    <button type="button" class="btn btn-icon btn-round btn-success">
-                                        <i class="fa fa-check"></i>
-                                    </button>
-                                </td>
-                                <td>
-                                    <form action="{{ route('tags.destroy', $tag->id) }}" method="POST">
-                                        <a href="{{ route('tags.edit', $tag) }}"
-                                            class="btn btn-primary text-white ml-3">Edit</a>
-
-                                        @csrf
-                                        @method('DELETE')
-
-                                        <button type="submit" class="btn btn-danger"
-                                            onclick="return confirm('Sure Want Delete?')">Delete</button>
-                                    </form>
-                                </td>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Active</th>
+                                <th>Action</th>
                             </tr>
-                        @endforeach
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Active</th>
+                                <th>Action</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            @foreach ($tags as $tag)
+                                <tr>
+                                    <td>{{ $tag->id }}</td>
+                                    <td>{{ $tag->name }}</td>
+                                    <td>
+                                        <button type="button" class="btn btn-icon btn-round btn-success">
+                                            <i class="fa fa-check"></i>
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <form action="{{ route('tags.destroy', $tag->id) }}" method="POST">
+                                            <a href="{{ route('tags.edit', $tag) }}"
+                                                class="btn btn-primary text-white ml-3">Edit</a>
 
-                    </tbody>
-                </table>
+                                            @csrf
+                                            @method('DELETE')
+
+                                            <button type="submit" class="btn btn-danger"
+                                                onclick="return confirm('Sure Want Delete?')">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
