@@ -3,7 +3,10 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
-use App\Models\User;
+use App\Models\Episode;
+use App\Models\Genre;
+use App\Models\Movie;
+use App\Models\Tag;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -21,134 +24,201 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        Category::factory(18)->sequence(
+        Category::factory(5)->sequence(
             [
-                "title" => "Sen to Chihiro no Kamikakushi",
-                "thumbnail" => "img/popular/popular-1.jpg",
-                "comments" => 11,
-                "views" => 9141,
-                "ep" => 18,
+                "name" => "Phim Hoạt Hình",
             ],
             [
-                "title" => "Kizumonogatari III: Reiket su-hen",
-                "thumbnail" => "img/popular/popular-2.jpg",
-                "comments" => 11,
-                "views" => 9141,
-                "ep" => 18,
+                "name" => "Phim Chuyển Sinh",
             ],
             [
-                "title" => "Shirogane Tamashii hen Kouhan sen",
-                "thumbnail" => "img/popular/popular-3.jpg",
-                "comments" => 11,
-                "views" => 9141,
-                "ep" => 18,
+                "name" => "Phim Chuyển Thể",
             ],
             [
-                "title" => "Rurouni Kenshin: Meiji Kenkaku Romantan",
-                "thumbnail" => "img/popular/popular-4.jpg",
-                "comments" => 11,
-                "views" => 9141,
-                "ep" => 18,
+                "name" => "Phim Viễn Tây",
             ],
             [
-                "title" => "Mushishi Zoku Shou 2nd Season",
-                "thumbnail" => "img/popular/popular-5.jpg",
-                "comments" => 11,
-                "views" => 9141,
-                "ep" => 18,
-            ],
-            [
-                "title" => "Monogatari Series: Second Season",
-                "thumbnail" => "img/popular/popular-6.jpg",
-                "comments" => 11,
-                "views" => 9141,
-                "ep" => 18,
-            ],
-            [
-                "title" => "Great Teacher Onizuka",
-                "thumbnail" => "img/recent/recent-1.jpg",
-                "comments" => 11,
-                "views" => 9141,
-                "ep" => 18,
-            ],
-            [
-                "title" => "Fate/stay night Movie: Heaven's Feel - II. Lost",
-                "thumbnail" => "img/recent/recent-2.jpg",
-                "comments" => 11,
-                "views" => 9141,
-                "ep" => 18,
-            ],
-            [
-                "title" => "Mushishi Zoku Shou: Suzu no Shizuku",
-                "thumbnail" => "img/recent/recent-3.jpg",
-                "comments" => 11,
-                "views" => 9141,
-                "ep" => 18,
-            ],
-            [
-                "title" => "Fate/Zero 2nd Season",
-                "thumbnail" => "img/recent/recent-4.jpg",
-                "comments" => 11,
-                "views" => 9141,
-                "ep" => 18,
-            ],
-            [
-                "title" => "Kizumonogatari II: Nekket su-hen",
-                "thumbnail" => "img/recent/recent-5.jpg",
-                "comments" => 11,
-                "views" => 9141,
-                "ep" => 18,
-            ],
-            [
-                "title" => "The Seven Deadly Sins: Wrath of the Gods",
-                "thumbnail" => "img/recent/recent-6.jpg",
-                "comments" => 11,
-                "views" => 9141,
-                "ep" => 18,
-            ],
-            [
-                "title" => "The Seven Deadly Sins: Wrath of the Gods",
-                "thumbnail" => "img/trending/trend-1.jpg",
-                "comments" => 11,
-                "views" => 9141,
-                "ep" => 18,
-            ],
-            [
-                "title" => "Gintama Movie 2: Kanketsu-hen - Yorozuya yo Eien",
-                "thumbnail" => "img/trending/trend-2.jpg",
-                "comments" => 11,
-                "views" => 9141,
-                "ep" => 18,
-            ],
+                "name" => "Phim Chiến tranh",
+            ]
+        )->create();
 
+        $genres = Genre::factory(5)->sequence(
             [
-                "title" => "Shingeki no Kyojin Season 3 Part 2",
-                "thumbnail" => "img/trending/trend-3.jpg",
-                "comments" => 11,
-                "views" => 9141,
-                "ep" => 18,
+                "name" => "Phim Tình cảm",
             ],
             [
-                "title" => "Fullmetal Alchemist: Brotherhood",
-                "thumbnail" => "img/trending/trend-4.jpg",
-                "comments" => 11,
-                "views" => 9141,
-                "ep" => 18,
+                "name" => "Phim ca nhạc",
             ],
             [
-                "title" => "Shiratorizawa Gakuen Koukou",
-                "thumbnail" => "img/trending/trend-5.jpg",
-                "comments" => 11,
-                "views" => 9141,
-                "ep" => 18,
+                "name" => "Phim siêu anh hùng",
             ],
             [
-                "title" => "Code Geass: Hangyaku no Lelouch R2",
-                "thumbnail" => "img/trending/trend-6.jpg",
-                "comments" => 11,
-                "views" => 9141,
-                "ep" => 18,
+                "name" => "Phim sử thi",
             ],
+            [
+                "name" => "Phim tiểu sử",
+            ]
+        )->create();
+        $tags = Tag::factory(5)->sequence(
+            [
+                "name" => "phimhai1",
+            ],
+            [
+                "name" => "phimhai2",
+            ],
+            [
+                "name" => "phimhai3",
+            ],
+            [
+                "name" => "phimhai4",
+            ],
+            [
+                "name" => "phimhai5",
+            ]
+        )->create();
+        Movie::factory(50)->sequence(
+            [
+                "title" => "Hành Trình Từ Kẻ Ngốc Trở Thành Tỷ Phú",
+                "thumbnail" => "storage/thumbnails/movies/anime.jpg",
+                "category_id" => 1,
+            ],
+            [
+                "title" => "Đảo Hải Tặc - One Piece",
+                "thumbnail" => "storage/thumbnails/movies/anime.jpg",
+                "category_id" => 2,
+            ],
+            [
+                "title" => "One Punch Man",
+                "thumbnail" => "storage/thumbnails/movies/anime.jpg",
+                "category_id" => 3,
+            ],
+            [
+                "title" => "7 Viên Ngọc Rồng",
+                "thumbnail" => "storage/thumbnails/movies/anime.jpg",
+                "category_id" => 4,
+            ],
+            [
+                "title" => "Naruto",
+                "thumbnail" => "storage/thumbnails/movies/anime.jpg",
+                "category_id" => 1,
+            ],
+            [
+                "title" => "Dr. Stone",
+                "thumbnail" => "storage/thumbnails/movies/anime.jpg",
+                "category_id" => 5,
+            ],
+            [
+                "title" => "Boruto",
+                "thumbnail" => "storage/thumbnails/movies/anime.jpg",
+                "category_id" => 5,
+            ],
+            [
+                "title" => "Thanh Gươm Diệt Quỷ - Kimetsu no Yaiba",
+                "thumbnail" => "storage/thumbnails/movies/anime.jpg",
+                "category_id" => 5,
+            ],
+            [
+                "title" => "Đại Chiến Người Khủng Lồ Titan",
+                "thumbnail" => "storage/thumbnails/movies/anime.jpg",
+                "category_id" => 5,
+            ],
+            [
+                "title" => "Death Note",
+                "thumbnail" => "storage/thumbnails/movies/anime.jpg",
+                "category_id" => 5,
+            ],
+            [
+                "title" => "Đại Xà Tu Tiên",
+                "thumbnail" => "storage/thumbnails/movies/anime.jpg",
+                "category_id" => 5,
+            ],
+            [
+                "title" => "Chuyển Sinh Thành Goblin",
+                "thumbnail" => "storage/thumbnails/movies/anime.jpg",
+                "category_id" => 5,
+            ],
+            [
+                "title" => "Chàng Rể Mạnh Nhất Lịch Sử",
+                "thumbnail" => "storage/thumbnails/movies/anime.jpg",
+                "category_id" => 1,
+            ],
+            [
+                "title" => "Đại Quản Gia Là Ma Hoàng",
+                "thumbnail" => "storage/thumbnails/movies/anime.jpg",
+                "category_id" => 1,
+            ],
+            [
+                "title" => "Naruto",
+                "thumbnail" => "storage/thumbnails/movies/anime.jpg",
+                "category_id" => 1,
+            ],
+            [
+                "title" => "Phàm Nhân Tu Tiên",
+                "thumbnail" => "storage/thumbnails/movies/anime.jpg",
+                "category_id" => 1,
+            ],
+            [
+                "title" => "Thôn Phệ Tinh Không",
+                "thumbnail" => "storage/thumbnails/movies/anime.jpg",
+                "category_id" => 1,
+            ],
+            [
+                "title" => "Tinh Thần Biến",
+                "thumbnail" => "storage/thumbnails/movies/anime.jpg",
+                "category_id" => 1,
+            ],
+            [
+                "title" => "Thế giới hoàn mỹ",
+                "thumbnail" => "storage/thumbnails/movies/anime.jpg",
+                "category_id" => 1,
+            ],
+            [
+                "title" => "Vũ Động Càn Khôn",
+                "thumbnail" => "storage/thumbnails/movies/anime.jpg",
+                "category_id" => 1,
+            ],
+            [
+                "title" => "Đấu La Đại Lục",
+                "thumbnail" => "storage/thumbnails/movies/anime.jpg",
+                "category_id" => 1,
+            ],
+            [
+                "title" => "Nhất Niệm Vĩnh Hằng",
+                "thumbnail" => "storage/thumbnails/movies/anime.jpg",
+                "category_id" => 1,
+            ],
+            [
+                "title" => "Tru Tiên",
+                "thumbnail" => "storage/thumbnails/movies/anime.jpg",
+                "category_id" => 1,
+            ],
+        )->hasAttached($genres)->hasAttached($tags)->create();
+        Episode::factory(5)->sequence(
+            [
+                "title" => "Tập 01",
+                "link" => "https://www.youtube.com/watch?v=tzyQraH6W_8",
+                "movie_id" => 1,
+            ],
+            [
+                "title" => "Tập 01",
+                "link" => "https://www.youtube.com/watch?v=tzyQraH6W_8",
+                "movie_id" => 2,
+            ],
+            [
+                "title" => "Tập 01",
+                "link" => "https://www.youtube.com/watch?v=tzyQraH6W_8",
+                "movie_id" => 3,
+            ],
+            [
+                "title" => "Tập 01",
+                "link" => "https://www.youtube.com/watch?v=tzyQraH6W_8",
+                "movie_id" => 4,
+            ],
+            [
+                "title" => "Tập 01",
+                "link" => "https://www.youtube.com/watch?v=tzyQraH6W_8",
+                "movie_id" => 5,
+            ]
         )->create();
     }
 }

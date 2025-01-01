@@ -4,7 +4,7 @@
             <div class="col-lg-2">
                 <div class="header__logo">
                     <a href="/">
-                        <img src={{ asset("img/logo.png") }} alt="">
+                        <img src={{ asset('img/logo.png') }} alt="">
                     </a>
                 </div>
             </div>
@@ -15,6 +15,7 @@
                             <li class="active"><a href="/">Homepage</a></li>
                             <li><a href="/categories">Categories <span class="arrow_carrot-down"></span></a>
                                 <ul class="dropdown">
+                                    <li><a href={{ route('movies.index') }}>Movies</a></li>
                                     <li><a href="/categories">Categories</a></li>
                                     <li><a href="/anime-details">Anime Details</a></li>
                                     <li><a href="./anime-watching">Anime Watching</a></li>

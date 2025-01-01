@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Category>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Episode>
  */
-class CategoryFactory extends Factory
+class EpisodeFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,8 +17,9 @@ class CategoryFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
-            'active' => fake()->boolean(),
+            'title' => fake()->title(),
+            'link' => fake()->url(),
+            'view' => fake()->randomNumber(),
         ];
     }
 }

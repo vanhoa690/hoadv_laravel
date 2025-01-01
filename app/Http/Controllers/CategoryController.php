@@ -3,23 +3,80 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use Illuminate\View\View;
+use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function index(): View
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
     {
-        $categories =  Category::latest()->get();
-        return view('pages.categories.index', compact('categories'));
+        $categories =  Category::latest()->withCount(relations: 'movies')->get();
+        // return response()->json($categories);
+        return view('pages.categories.list', compact('categories'));
     }
 
-    public function show(Category $category): View
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
     {
-        return view('pages.categories.show', compact('category'));
+        return view("pages.categories.create");
     }
 
-    public function watching(Category $category): View
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
     {
-        return view('pages.categories.watching', compact('category'));
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+            'active' => 'required',
+        ]);
+        // return response()->json($validated);
+        Category::create($validated);
+        return redirect()->route('categories.index')->with('status', 'Category Has Been inserted');
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        $category =  Category::find($id);
+        return view("pages.categories.edit", compact('category'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        $category =  Category::find($id);
+        return view("pages.categories.edit", compact('category'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        $category = Category::find($id);
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+            'active' => 'required',
+        ]);
+        $category->update($validated);
+        return redirect()->route('categories.index')->with('status', value: 'Category Has Been Updated');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        Category::find($id)->delete();
+        return redirect()->route('categories.index')->with('status', 'Category Deleted');
     }
 }

@@ -2,12 +2,22 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MovieController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('homepage');
 })->name('index');
+
+
+
+Route::resource('movies', MovieController::class)->names('movies');
+
+// Route::get(
+//     '/movie-watching/{id}',
+//     MovieController::class
+// )->name('watching');
 
 Route::get('/anime-details', function () {
     return view('anime-details');
