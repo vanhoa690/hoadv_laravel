@@ -2,9 +2,9 @@
 
     <x-breadcrumb>
         <a href="/"><i class="fa fa-home"></i> Home</a>
-        <a href="/movies">Movies</a>
-        <a href="#">Romance</a>
-        <span>Fate Stay Night: Unlimited Blade</span>
+        <a href="{{ route('movies.index') }}">Movies</a>
+        <a href="{{ route('movies.show', $movie) }}">{{ $movie->title }}</a>
+        <span>{{ $episode->title }}</span>
     </x-breadcrumb>
 
     <!-- Anime Section Begin -->
@@ -13,37 +13,18 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="anime__video__player">
-                        <video id="player" playsinline controls data-poster={{ asset('img/anime-watch.jpg') }}>
-                            <source
-                                src="https://media.istockphoto.com/id/1426913470/vi/video/d%E1%BB%8Bch-v%E1%BB%A5-ph%C3%A2n-ph%E1%BB%91i-thu%E1%BB%91c-%C4%91a-k%C3%AAnh-cho-b%E1%BB%87nh-nh%C3%A2n-t%E1%BB%B1-ch%E1%BB%AFa-b%E1%BB%87nh-t%E1%BA%A1i-nh%C3%A0.mp4?s=mp4-640x640-is&k=20&c=kcXTk55FtcbpxdjYqLZ-z67lWFz7VOgLqOY1GUGXpKg="
-                                type="video/mp4" />
-                            <!-- Captions are optional -->
-                            <track kind="captions" label="English captions" src="#" srclang="en" default />
-                        </video>
+                        <iframe width="100%" height="583" src="{{ $episode->link }}"
+                            title="{{ $movie->title }} - {{ $episode->title }}" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
                     <div class="anime__details__episodes">
                         <div class="section-title">
                             <h5>List Name</h5>
                         </div>
-                        <a href="#">Ep 01</a>
-                        <a href="#">Ep 02</a>
-                        <a href="#">Ep 03</a>
-                        <a href="#">Ep 04</a>
-                        <a href="#">Ep 05</a>
-                        <a href="#">Ep 06</a>
-                        <a href="#">Ep 07</a>
-                        <a href="#">Ep 08</a>
-                        <a href="#">Ep 09</a>
-                        <a href="#">Ep 10</a>
-                        <a href="#">Ep 11</a>
-                        <a href="#">Ep 12</a>
-                        <a href="#">Ep 13</a>
-                        <a href="#">Ep 14</a>
-                        <a href="#">Ep 15</a>
-                        <a href="#">Ep 16</a>
-                        <a href="#">Ep 17</a>
-                        <a href="#">Ep 18</a>
-                        <a href="#">Ep 19</a>
+                        @foreach ($movie->episodes as $episode)
+                            <a href="{{ route('episodes.show', $episode) }}">{{ $episode->title }}</a>
+                        @endforeach
                     </div>
                 </div>
             </div>

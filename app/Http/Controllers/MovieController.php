@@ -14,11 +14,9 @@ class MovieController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index()
     {
-        $movie_id = $request->query("movie_id");
-        $movies = $movie_id  ?  Movie::where('id', $movie_id)->get() : Movie::orderBy("id", "ASC")->latest()->get();
-        // return response()->json($movies);
+        $movies =  Movie::orderBy("id", "ASC")->withCount('episodes')->latest()->get();
         return view('pages.movies.list', compact('movies'));
     }
 
@@ -66,17 +64,11 @@ class MovieController extends Controller
     public function show(string $id)
     {
         $movie =  Movie::find($id);
-        Movie::where('id', $id)->increment('views');
+        // return response()->json($movie);
+
+        // Movie::where('id', $id)->increment('views');
         return view("pages.movies.show", compact('movie'));
     }
-
-    // public function watching(string $id)
-    // {
-    //     $movie =  Movie::find($id);
-    //     Movie::where('id', $id)->increment('views');
-    //     return view("pages.movies.watching", compact('movie'));
-    // }
-
     /**
      * Show the form for editing the specified resource.
      */

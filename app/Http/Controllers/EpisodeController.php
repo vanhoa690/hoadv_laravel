@@ -53,8 +53,9 @@ class EpisodeController extends Controller
     public function show(string $id)
     {
         $episode =  Episode::find($id);
+        $movie =  Movie::find($episode->movie_id);
         Episode::where('id', $id)->increment('view');
-        return view("pages.episodes.show", compact('episode'));
+        return view("pages.episodes.show", compact('episode', 'movie'));
     }
 
     /**

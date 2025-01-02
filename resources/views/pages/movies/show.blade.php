@@ -1,8 +1,8 @@
 <x-layout>
     <x-breadcrumb>
         <a href="/"><i class="fa fa-home"></i> Home</a>
-        <a href="/movies">Movies</a>
-        <span>Romance</span>
+        <a href="{{ route('movies.index') }}">Movies</a>
+        <span>{{ $movie->title }}</span>
     </x-breadcrumb>
     <!-- Anime Section Begin -->
     <section class="anime-details spad">
@@ -56,8 +56,11 @@
                             </div>
                             <div class="anime__details__btn">
                                 <a href="#" class="follow-btn"><i class="fa fa-heart-o"></i> Follow</a>
-                                <a href="{{ route('movies.show', $movie) }}" class="watch-btn"><span>Watch
-                                        Now</span> <i class="fa fa-angle-right"></i></a>
+                                @if (isset($movie->episodes[0]))
+                                    <a href="{{ route('episodes.show', $movie->episodes[0]) }}"
+                                        class="watch-btn"><span>Watch
+                                            Now</span> <i class="fa fa-angle-right"></i></a>
+                                @endif
                             </div>
                         </div>
                     </div>

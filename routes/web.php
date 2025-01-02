@@ -1,30 +1,23 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\EpisodeController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('homepage');
-})->name('index');
-
-
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::resource('movies', MovieController::class)->names('movies');
 
-// Route::get(
-//     '/movie-watching/{id}',
-//     MovieController::class
-// )->name('watching');
+Route::resource('episodes', EpisodeController::class)->names('episodes');
 
 Route::get('/anime-details', function () {
     return view('anime-details');
 });
-Route::get('/anime-watching', function () {
-    return view('anime-watching');
-});
+
 
 Route::get('register', [RegisterController::class, 'create'])->name('register');
 Route::post('register', [RegisterController::class, 'store']);

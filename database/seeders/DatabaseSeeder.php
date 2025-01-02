@@ -196,27 +196,27 @@ class DatabaseSeeder extends Seeder
         Episode::factory(5)->sequence(
             [
                 "title" => "Tập 01",
-                "link" => "https://www.youtube.com/watch?v=tzyQraH6W_8",
+                "link" => "https://www.youtube.com/embed/yYO2ayQmuHs",
                 "movie_id" => 1,
             ],
             [
                 "title" => "Tập 01",
-                "link" => "https://www.youtube.com/watch?v=tzyQraH6W_8",
+                "link" => "https://www.youtube.com/embed/yYO2ayQmuHs",
                 "movie_id" => 2,
             ],
             [
                 "title" => "Tập 01",
-                "link" => "https://www.youtube.com/watch?v=tzyQraH6W_8",
+                "link" => "https://www.youtube.com/embed/yYO2ayQmuHs",
                 "movie_id" => 3,
             ],
             [
                 "title" => "Tập 01",
-                "link" => "https://www.youtube.com/watch?v=tzyQraH6W_8",
+                "link" => "https://www.youtube.com/embed/yYO2ayQmuHs",
                 "movie_id" => 4,
             ],
             [
                 "title" => "Tập 01",
-                "link" => "https://www.youtube.com/watch?v=tzyQraH6W_8",
+                "link" => "https://www.youtube.com/embed/yYO2ayQmuHs",
                 "movie_id" => 5,
             ]
         )->create();

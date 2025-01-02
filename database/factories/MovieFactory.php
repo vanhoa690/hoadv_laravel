@@ -21,9 +21,9 @@ class MovieFactory extends Factory
             'thumbnail' => fake()->imageUrl(),
             'active' => fake()->boolean(),
             'description' => fake()->text(),
-            'views' => fake()->randomNumber(),
-            'comments' => fake()->randomNumber(),
-            'votes' => fake()->randomNumber(),
+            'views' => fake()->randomNumber(1, 99),
+            'comments' => fake()->randomNumber(1, 99),
+            'votes' => fake()->randomNumber(1, 99),
         ];
     }
 }
