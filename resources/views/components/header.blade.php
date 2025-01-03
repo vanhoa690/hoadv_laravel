@@ -15,15 +15,13 @@
                             <li class="active"><a href="/">Homepage</a></li>
                             <li><a href="/categories">Categories <span class="arrow_carrot-down"></span></a>
                                 <ul class="dropdown">
-                                    <li><a href={{ route('movies.index') }}>Movies</a></li>
-                                    <li><a href="/categories">Categories</a></li>
-                                    <li><a href="/anime-details">Anime Details</a></li>
-                                    <li><a href="./anime-watching">Anime Watching</a></li>
-                                    <li><a href="/blog-detail">Blog Details</a></li>
-                                    <li><a href="/register">Register</a></li>
-                                    <li><a href="/login">Login</a></li>
+                                    @foreach ($categories as $category)
+                                        <li><a href={{ route('categories.show', $category) }}>{{ $category->name }}</a>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </li>
+                            <li><a href={{ route('movies.index') }}>Movies</a></li>
                             <li><a href="/blog">Our Blog</a></li>
                             <li><a href="#">Contacts</a></li>
                         </ul>

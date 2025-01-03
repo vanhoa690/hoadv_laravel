@@ -45,7 +45,8 @@ class CategoryController extends Controller
     public function show(string $id)
     {
         $category =  Category::find($id);
-        return view("pages.categories.edit", compact('category'));
+
+        return view("pages.categories.show", compact('category'));
     }
 
     /**

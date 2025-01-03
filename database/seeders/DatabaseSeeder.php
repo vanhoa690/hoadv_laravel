@@ -42,39 +42,27 @@ class DatabaseSeeder extends Seeder
             ]
         )->create();
 
-        $genres = Genre::factory(5)->sequence(
+        $genres = Genre::factory(2)->sequence(
             [
-                "name" => "Phim Tình cảm",
+                "name" => "Active",
             ],
             [
-                "name" => "Phim ca nhạc",
+                "name" => "Movie",
             ],
-            [
-                "name" => "Phim siêu anh hùng",
-            ],
-            [
-                "name" => "Phim sử thi",
-            ],
-            [
-                "name" => "Phim tiểu sử",
-            ]
         )->create();
-        $tags = Tag::factory(5)->sequence(
+        $tags = Tag::factory(4)->sequence(
             [
-                "name" => "phimhai1",
+                "name" => "trending",
             ],
             [
-                "name" => "phimhai2",
+                "name" => "popular",
             ],
             [
-                "name" => "phimhai3",
+                "name" => "recent",
             ],
             [
-                "name" => "phimhai4",
+                "name" => "live",
             ],
-            [
-                "name" => "phimhai5",
-            ]
         )->create();
         Movie::factory(50)->sequence(
             [
@@ -218,6 +206,31 @@ class DatabaseSeeder extends Seeder
                 "title" => "Tập 01",
                 "link" => "https://www.youtube.com/embed/yYO2ayQmuHs",
                 "movie_id" => 5,
+            ],
+            [
+                "title" => "Tập 01",
+                "link" => "https://www.youtube.com/embed/yYO2ayQmuHs",
+                "movie_id" => 6,
+            ],
+            [
+                "title" => "Tập 01",
+                "link" => "https://www.youtube.com/embed/yYO2ayQmuHs",
+                "movie_id" => 7,
+            ],
+            [
+                "title" => "Tập 01",
+                "link" => "https://www.youtube.com/embed/yYO2ayQmuHs",
+                "movie_id" => 8,
+            ],
+            [
+                "title" => "Tập 01",
+                "link" => "https://www.youtube.com/embed/yYO2ayQmuHs",
+                "movie_id" => 9,
+            ],
+            [
+                "title" => "Tập 01",
+                "link" => "https://www.youtube.com/embed/yYO2ayQmuHs",
+                "movie_id" => 10,
             ]
         )->create();
     }

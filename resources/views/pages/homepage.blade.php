@@ -63,7 +63,26 @@
                             </div>
                         </div>
                         <div class="row">
-                            @foreach ($movies as $movie)
+                            @foreach ($movies_trending as $movie)
+                                <x-movie-card :$movie />
+                            @endforeach
+                        </div>
+                    </div>
+                    <div class="popular__product">
+                        <div class="row">
+                            <div class="col-lg-8 col-md-8 col-sm-8">
+                                <div class="section-title">
+                                    <h4>Popular Shows</h4>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4">
+                                <div class="btn__all">
+                                    <a href="#" class="primary-btn">View All <span class="arrow_right"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            @foreach ($movies_popular as $movie)
                                 <x-movie-card :$movie />
                             @endforeach
                         </div>
