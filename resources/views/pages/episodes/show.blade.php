@@ -13,7 +13,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="anime__video__player">
-                        <iframe width="100%" height="583" src="{{ $episode->link }}"
+                        <iframe width="100%" height="650" src="{{ $episode->link }}"
                             title="{{ $movie->title }} - {{ $episode->title }}" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
