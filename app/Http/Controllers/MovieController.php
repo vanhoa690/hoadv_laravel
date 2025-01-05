@@ -16,8 +16,9 @@ class MovieController extends Controller
      */
     public function index()
     {
+        $title = "Movie List";
         $movies =  Movie::orderBy("id", "ASC")->withCount('episodes')->latest()->get();
-        return view('pages.movies.list', compact('movies'));
+        return view('pages.movies.list', compact('title', 'movies'));
     }
 
     /**

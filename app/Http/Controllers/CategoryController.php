@@ -12,9 +12,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        $title = "Category List";
         $categories =  Category::latest()->withCount(relations: 'movies')->get();
         // return response()->json($categories);
-        return view('pages.categories.list', compact('categories'));
+        return view('pages.categories.list', compact('title', 'categories'));
     }
 
     /**

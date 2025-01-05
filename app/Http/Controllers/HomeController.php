@@ -11,6 +11,7 @@ class HomeController extends Controller
 
     public function index()
     {
+        $title = "Homepage";
         $movies =  Movie::orderBy("id", "ASC")->latest()->get();
         $movies_trending =  Movie::whereHas('tags', function ($q) {
             $q->where('tag_id', 1);
@@ -20,6 +21,6 @@ class HomeController extends Controller
         })->withCount('episodes')->take(9)->get();
         // return response()->json($movies_trending);
 
-        return view('pages.homepage', compact('movies', 'movies_trending', 'movies_popular'));
+        return view('pages.homepage', compact('title', 'movies', 'movies_trending', 'movies_popular'));
     }
 }

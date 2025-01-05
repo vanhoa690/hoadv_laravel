@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout :title="$title">
     <x-breadcrumb>
         <a href="/"><i class="fa fa-home"></i> Home</a>
         <a href="/categories">Categories</a>
@@ -32,7 +32,7 @@
                         </div>
                         <div class="row">
                             @foreach ($categories as $category)
-                                <x-product-card :$category/>
+                                <x-product-card :$category />
                             @endforeach
                         </div>
                     </div>

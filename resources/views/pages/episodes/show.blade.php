@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout :title="$movie->title . ' - ' . $episode->title">
 
     <x-breadcrumb>
         <a href="/"><i class="fa fa-home"></i> Home</a>

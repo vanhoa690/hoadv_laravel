@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout :title="$title">
     <!-- Hero Section Begin -->
     <section class="hero">
         <div class="container">
