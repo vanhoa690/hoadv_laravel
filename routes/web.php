@@ -1,7 +1,18 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\EpisodeController;
+use App\Http\Controllers\GenreController;
+use App\Http\Controllers\MovieController;
+use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('pages.homepage');
 });
+
+Route::resource('categories', CategoryController::class)->names('categories');
+Route::resource('genres', GenreController::class)->names('genres');
+Route::resource('movies', MovieController::class)->names('movies');
+Route::resource('episodes', EpisodeController::class)->names('episodes');
+Route::resource('tags', TagController::class)->names('tags');
